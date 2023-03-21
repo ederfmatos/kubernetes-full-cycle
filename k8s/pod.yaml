@@ -1,0 +1,13 @@
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "goserver"
+  labels:
+    app: "goserver"
+spec:
+  containers:
+    - name: "goserver"
+      image: ederfmatos/full-cycle-go-kubernetes:latest
+      ports:
+        - containerPort: 8080
