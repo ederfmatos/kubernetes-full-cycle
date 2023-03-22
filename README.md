@@ -38,3 +38,16 @@ kubectl rollout history deployment <NAME>
 kubectl rollout undo deployment <NAME>
 kubectl rollout undo deployment <NAME> --to-revision=<NUMBER>
 ```
+
+**Port forward**
+
+```sh
+kubectl port-forward <TYPE>/<NAME> <PORT>:<TARGET_PORT>
+```
+
+**Services**
+
+```sh
+kubectl get services
+kubectl get svc
+```
