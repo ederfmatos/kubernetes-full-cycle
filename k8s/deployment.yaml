@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver
-  replicas: 10
+  replicas: 2
   template:
     metadata:
       labels:
@@ -16,4 +16,21 @@ spec:
     spec:
       containers:
         - name: "goserver"
-          image: ederfmatos/full-cycle-go-kubernetes:v2
+          image: ederfmatos/full-cycle-go-kubernetes:v4
+          envFrom:
+            - configMapRef:
+                name: goserver-env
+          # env:
+          #   - name: NAME
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: goserver-env
+          #         key: NAME
+          #   - name: AGE
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: goserver-env
+          #         key: AGE
+                  
+          #   - name: ANOTHER
+          #     value: VALUE
