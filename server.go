@@ -32,7 +32,7 @@ func Secrets(writer http.ResponseWriter, request *http.Request) {
 
 func Health(writer http.ResponseWriter, request *http.Request) {
 	duration := time.Since(startedAt)
-	if duration.Seconds() > 25 {
+	if duration.Seconds() < 10 {
 		writer.WriteHeader(500)
 		writer.Write([]byte(fmt.Sprintf("Duration: %v", duration.Seconds())))
 	} else {

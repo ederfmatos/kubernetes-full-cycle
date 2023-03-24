@@ -16,15 +16,23 @@ spec:
     spec:
       containers:
         - name: "goserver"
-          image: ederfmatos/full-cycle-go-kubernetes:v8
-          livenessProbe:
+          image: ederfmatos/full-cycle-go-kubernetes:v9
+          readinessProbe:
             httpGet:
               path: "/health"
               port: 8080
-            periodSeconds: 5
-            timeoutSeconds: 2
-            failureThreshold: 3
-            successThreshold: 1
+            initialDelaySeconds: 10
+            periodSeconds: 3
+            failureThreshold: 1
+            
+          # livenessProbe:
+          #   httpGet:
+          #     path: "/health"
+          #     port: 8080
+          #   periodSeconds: 2
+          #   timeoutSeconds: 2
+          #   failureThreshold: 3
+          #   successThreshold: 1
 
           envFrom:
             - configMapRef:
