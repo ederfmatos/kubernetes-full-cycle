@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver
-  replicas: 5
+  replicas: 1
   template:
     metadata:
       labels:
@@ -16,7 +16,16 @@ spec:
     spec:
       containers:
         - name: "goserver"
-          image: ederfmatos/full-cycle-go-kubernetes:v7
+          image: ederfmatos/full-cycle-go-kubernetes:v8
+          livenessProbe:
+            httpGet:
+              path: "/health"
+              port: 8080
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+            successThreshold: 1
+
           envFrom:
             - configMapRef:
                 name: goserver-env
