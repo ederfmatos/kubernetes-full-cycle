@@ -52,3 +52,9 @@ kubectl port-forward <TYPE>/<NAME> <PORT>:<TARGET_PORT>
 kubectl get services
 kubectl get svc
 ```
+
+**HPA Stress Test**
+
+```sh
+kubectl run -it fortio --rm --image=fortio/fortio -- load -qps 1900 -t 220s -c 160 <URL>
+```

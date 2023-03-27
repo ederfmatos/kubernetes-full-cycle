@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver
-  replicas: 4
+  replicas: 1
   template:
     metadata:
       labels:
@@ -16,15 +16,15 @@ spec:
     spec:
       containers:
         - name: "goserver"
-          image: ederfmatos/full-cycle-go-kubernetes:v10
+          image: ederfmatos/full-cycle-go-kubernetes:v11
 
           resources:
             requests:
-              cpu: 100m
-              memory: 20Mi
+              cpu: "0.1"
+              memory: 25Mi
             limits:
-              cpu: 200m
-              memory: 40Mi
+              cpu: "0.15"
+              memory: 30Mi
 
           startupProbe:
             httpGet:
