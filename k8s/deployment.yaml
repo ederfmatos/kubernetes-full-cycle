@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver
-  replicas: 5
+  replicas: 4
   template:
     metadata:
       labels:
@@ -17,6 +17,14 @@ spec:
       containers:
         - name: "goserver"
           image: ederfmatos/full-cycle-go-kubernetes:v10
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 20Mi
+            limits:
+              cpu: 200m
+              memory: 40Mi
 
           startupProbe:
             httpGet:
@@ -46,17 +54,3 @@ spec:
                 name: goserver-env
             - secretRef:
                 name: goserver-secret
-          # env:
-          #   - name: NAME
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: goserver-env
-          #         key: NAME
-          #   - name: AGE
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: goserver-env
-          #         key: AGE
-
-          #   - name: ANOTHER
-          #     value: VALUE

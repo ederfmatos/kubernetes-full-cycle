@@ -16,6 +16,7 @@ kubectl get nodes
 kubectl get pods
 kubectl delete pod <NAME>
 kubectl describe pod <NAME>
+kubectl top pod <NAME>
 ```
 
 **Replicasets**
