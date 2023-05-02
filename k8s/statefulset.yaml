@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: mysql
-  replicas: 20
+  replicas: 5
   serviceName: mysql-h
   template:
     metadata:
