@@ -54,3 +54,13 @@ spec:
                 name: goserver-env
             - secretRef:
                 name: goserver-secret
+
+          volumeMounts:
+            - mountPath: /go/pvc
+              name: goserver-volume
+
+      volumes:
+        - name: goserver-volume
+          persistentVolumeClaim:
+            claimName: goserver-pvc
+      
